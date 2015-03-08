@@ -1,0 +1,16 @@
+package implementation;
+
+public class textReverse {
+
+	public void revereseString(String stringToReverse) {
+		int n = stringToReverse.length();
+		if(n <= 1){
+			System.out.print(stringToReverse.charAt(0));
+			
+		}else{
+			stringToReverse.substring(1);
+			revereseString(stringToReverse);
+		}
+	}
+
+}

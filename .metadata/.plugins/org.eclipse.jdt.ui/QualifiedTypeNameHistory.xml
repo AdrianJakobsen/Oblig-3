@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="java.time.DayOfWeek"/>
+<fullyQualifiedTypeName name="org.junit.Test"/>
+<fullyQualifiedTypeName name="java.time.temporal.WeekFields"/>
+<fullyQualifiedTypeName name="helperClasses.TimeHandler"/>
+<fullyQualifiedTypeName name="java.time.LocalTime"/>
+<fullyQualifiedTypeName name="java.time.LocalDate"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="java.util.Calendar"/>
+<fullyQualifiedTypeName name="java.util.GregorianCalendar"/>
+<fullyQualifiedTypeName name="interfaces.Permanent"/>
+<fullyQualifiedTypeName name="interfaces.Clonable"/>
+<fullyQualifiedTypeName name="implementation.textReverse"/>
+<fullyQualifiedTypeName name="javax.sound.sampled.ReverbType"/>
+<fullyQualifiedTypeName name="interfaces.Comperable"/>
+<fullyQualifiedTypeName name="java.util.Collection"/>
+<fullyQualifiedTypeName name="Implementation.Employee"/>
+<fullyQualifiedTypeName name="abstractClasses.Card"/>
+<fullyQualifiedTypeName name="Implementation.Guest"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="java.lang.Object"/>
+<fullyQualifiedTypeName name="java.util.Collections"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="java.util.Scanner"/>
+<fullyQualifiedTypeName name="java.lang.Math"/>
+</qualifiedTypeNameHistroy>

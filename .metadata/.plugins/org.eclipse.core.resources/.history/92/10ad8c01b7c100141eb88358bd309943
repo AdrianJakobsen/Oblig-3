@@ -1,0 +1,40 @@
+package Tests;
+
+import static org.junit.Assert.*;
+
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
+import org.junit.Test;
+
+import helperClasses.TimeHandler;
+import Implementation.Guest;
+
+public class testGuest {
+
+	@Test
+	public void boolean_CheckCardSuspended_default() {
+		Guest guest = new Guest(3);
+		assertFalse(guest.isSuspended());
+	}
+	
+	@Test
+	public void checkPinIsDefault(){
+		Guest guest = new Guest(6);
+		assertEquals(9999, guest.getPin());
+	}
+	
+	@Test
+	public void checkFalsePin_ShouldBeFalse(){
+		Guest guest = new Guest(5);
+		assertFalse(guest.checkPinCode(8999));
+	}
+	
+	@Test
+	public void checExpiredGuestCard(){
+		TimeHandler handleTime = new TimeHandler();
+		Calendar todayMock = new GregorianCalendar(2015, 1, 1);
+		Calendar expireMock = new GregorianCalendar(2015, 1, 20);
+		assertEquals(false, handleTime.guestValidTerm(todayMock, expireMock));
+	}
+}

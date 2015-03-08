@@ -1,0 +1,27 @@
+package implementation;
+
+import java.util.Scanner;
+
+import javax.sound.sampled.ReverbType;
+
+public class textReverse {
+	
+	public static void main(String [] args){
+		Scanner input = new Scanner(System.in);
+		System.out.println("please enter a word to be reversed: ");
+		String stringToReverse = input.nextLine();
+		reverseString(stringToReverse);
+	}
+
+	public static void reverseString(String stringToReverse) {
+		int n = stringToReverse.length();
+		if(n == 1){
+			System.out.print(stringToReverse.charAt(0));
+			
+		}else{
+			
+			reverseString(stringToReverse.substring(0, stringToReverse.length()));
+		}
+	}
+
+}

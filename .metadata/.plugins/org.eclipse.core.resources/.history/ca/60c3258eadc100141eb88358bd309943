@@ -1,0 +1,28 @@
+package Implementation;
+import abstractClasses.Card;
+
+
+public class Guest extends Card{
+
+
+	public Guest(int CardNumber) {
+		super("Guest", "", 9999, CardNumber, false);
+		if(getValidTermGuest()){
+			setAccsesCode(1);
+		}else{
+			setAccsesCode(-1);
+		}
+	}
+
+	@Override
+	public boolean checkPinCode(int pin) {
+		if(getValidTermGuest()){
+			if(pin==9999){
+				return true;
+			}
+			}else{
+				return false;
+		}
+		return false;
+	}
+}

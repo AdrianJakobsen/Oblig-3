@@ -1,0 +1,14 @@
+import java.util.Scanner;
+
+
+public class HanoiTower {
+
+	public static void main(String[] args) {
+		
+		Scanner input = new Scanner(System.in);
+		System.out.println("Enter number of disks: ");
+		int diskNumber = input.nextInt();
+
+	}
+
+}

@@ -1,0 +1,9 @@
+package interfaces;
+
+import Implementation.Employee;
+
+public interface Comperable<Card> {
+
+	int compareTo(Employee card);
+	
+}

@@ -1,0 +1,27 @@
+package Implementation;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
+import abstractClasses.Card;
+
+
+public class Guest extends Card{
+	Calendar expirationDate;
+
+	public Guest(int CardNumber) {
+		super("Guest", "", 9999, CardNumber, false);
+		expirationDate = getDateCreated().add(GregorianCalendar.DAY_OF_MONTH, 7);
+	}
+
+	@Override
+	public boolean checkPinCode(int pin) {
+		if(getValidTermGuest(expirationDate)){
+			if(pin==9999){
+				return true;
+			}
+			}else{
+				return false;
+		}
+		return false;
+	}
+}

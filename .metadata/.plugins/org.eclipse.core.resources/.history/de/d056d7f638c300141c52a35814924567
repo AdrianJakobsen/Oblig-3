@@ -1,0 +1,21 @@
+import java.util.Scanner;
+
+
+public class HanoiTower {
+
+	public static void main(String[] args) {
+		
+		Scanner input = new Scanner(System.in);
+		System.out.println("Enter number of disks: ");
+		int diskNumber = input.nextInt();
+		
+		System.out.println("The moves are: ");
+		moveDisks(diskNumber, 'A', 'B', 'C');
+	}
+
+	private static void moveDisks(int diskNumber, char fromTower, char toTower, char auxTower) {
+		
+		
+	}
+
+}

@@ -1,0 +1,102 @@
+package abstractClasses;
+
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
+import helperClasses.TimeHandler;
+
+public abstract class Card implements Cloneable, Comparable<Card>{
+	private static int cardNumber = 0;
+	private Calendar dateCreated;
+	private int pinCode;
+	private boolean cardSuspended;
+	private TimeHandler handleTime;
+	
+	private String firstName;
+	private String lastName;
+
+
+	public Card(int pinCode, boolean cardSuspended){
+		handleTime= new TimeHandler();
+		dateCreated = new GregorianCalendar();
+		this.pinCode=pinCode;
+		this.cardNumber = cardNumber + 1;
+		this.cardSuspended = cardSuspended;
+		this.firstName="";
+		this.lastName="";
+	}
+	
+	public int getPin(){
+		return pinCode;
+	}
+	
+	public int getCardNumber(){
+		return cardNumber;
+	}
+	
+	public String getFirstName(){
+		return firstName;
+	}
+	
+	public void setFirstName(String firstName){
+		this.firstName=firstName;
+	}
+	
+	public String getLastName(){
+		return lastName;
+	}
+	
+	public void setLastName(String lastName){
+		this.lastName=lastName;
+	}
+	
+	public Calendar getDateCreated(){
+		return dateCreated;
+	}
+
+	public boolean isSuspended(){
+		return cardSuspended;
+	}
+	
+	public void setSuspended(boolean setSuspended){
+		cardSuspended=setSuspended;
+	}
+	
+	public boolean workDay(){
+		return handleTime.isWeekday(dateCreated);
+	}
+	
+	public boolean workHour(){
+		return handleTime.isWorkHour();
+	}
+	
+	public boolean getValidTermGuest(Calendar expirationDate){
+		return handleTime.guestValidTerm(expirationDate);	
+	}
+	
+	public String toString(){
+		String returnString=
+				"pin code: "+ pinCode+"\n"+
+				"card number: "+cardNumber+
+				"is suspended: " +isSuspended();
+		return returnString;
+	}
+
+	public abstract boolean checkPinCode(int pin);
+	
+	@Override
+	public int compareTo(Card card) {
+		int lastNameCompared = getLastName().compareToIgnoreCase(card.getLastName());
+		
+		if(lastNameCompared  != 0){
+			return getLastName().compareToIgnoreCase(card.getLastName());
+		}else{
+			return getFirstName().compareToIgnoreCase(card.getFirstName());
+		}
+	}
+	
+	@Override
+	public Object clone() throws CloneNotSupportedException{
+		return super.clone();
+	}
+}

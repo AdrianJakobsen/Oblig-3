@@ -1,0 +1,27 @@
+package Implementation;
+
+import abstractClasses.Card;
+
+public class Employee extends Card {
+
+	public Employee(String firstName, String lastName, int pinCode, boolean cardSuspended) {
+		super(firstName, lastName, pinCode, false);
+
+	}
+
+	@Override
+	public boolean checkPinCode(int pin) {
+		if(super.isSuspended()==false){
+			if(workHour()){
+				if(pin==super.getPin()){
+					return true;
+				}else{
+					return false;
+				}
+			}
+		}else{
+			return false;
+		}
+		return false;
+	}
+}

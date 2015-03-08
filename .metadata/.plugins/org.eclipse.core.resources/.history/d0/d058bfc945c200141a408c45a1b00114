@@ -1,0 +1,78 @@
+package Implementation;
+
+
+import interfaces.Permanent;
+import abstractClasses.Card;
+
+public class Employee extends Card implements Permanent{
+
+	private String firstName;
+	private String lastName;
+	
+	public Employee(String firstName, String lastName, int pinCode, boolean cardSuspended) {
+		super(pinCode, false);
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
+
+	@Override
+	public boolean checkPinCode(int pin) {
+		if(super.isSuspended()==false){
+			if(workHour() & workDay()){
+				return true;
+			}else if(pin==super.getPin()){
+				return true;
+			}else{
+				return false;
+			}
+		}
+		return false;
+	}
+
+	@Override
+	public void setFirstName(String firstName) {
+		this.firstName=firstName;
+		
+	}
+
+	@Override
+	public String getFirstName() {
+		return firstName;
+	}
+
+	@Override
+	public void setLastName(String lastName) {
+		this.lastName=lastName;
+		
+	}
+
+	@Override
+	public String getLastName() {
+		return lastName;
+	}
+
+	@Override
+	public void setFullName(String firstName, String LastName) {
+		this.firstName=firstName;
+		this.lastName=lastName;
+		
+	}
+
+	@Override
+	public String getFullName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public double calculateCredit(double salary, double credit) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double calculateBonus(int seniority, double constant) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+}

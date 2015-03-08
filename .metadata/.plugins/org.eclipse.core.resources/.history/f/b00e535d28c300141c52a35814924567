@@ -1,0 +1,31 @@
+package implementation;
+
+import java.util.Scanner;
+
+public class textReverse {
+	private static int count = 0;
+	
+	public static void main(String [] args){
+		Scanner input = new Scanner(System.in);
+		System.out.println("please enter a word to be reversed: ");
+		String stringToReverse = input.nextLine();
+		reverseString(stringToReverse);
+	}
+
+	public static void reverseString(String stringToReverse) {
+		int n = stringToReverse.length();
+		if(n == 1){
+			System.out.println(stringToReverse.charAt(0));
+			count++;
+			System.out.println("Number of characters: "+count);
+			count = 0;
+		}else{
+			reverseString(stringToReverse, stringToReverse.length()-1);
+		}
+	}
+	public static void reverseString(String stringToReverse, int last){
+		System.out.print(stringToReverse.charAt(last));
+		count++;
+		reverseString(stringToReverse);
+	}
+}

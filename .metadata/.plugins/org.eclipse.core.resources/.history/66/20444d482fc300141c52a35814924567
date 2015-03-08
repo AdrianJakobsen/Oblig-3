@@ -1,0 +1,101 @@
+package Tests;
+
+import static org.junit.Assert.*;
+
+import java.time.LocalTime;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
+import helperClasses.TimeHandler;
+
+import org.junit.Test;
+
+import Implementation.Employee;
+
+public class testEmployee {
+
+	@Test
+	public void checkPin(){
+		Employee emp = new Employee("a", "b", 1234, false);
+		assertEquals(1234, emp.getPin());
+	}
+
+	@Test
+	public void ifTimeIsWithinRange(){
+		TimeHandler handleTime = new TimeHandler();
+		LocalTime timeInRange = LocalTime.of(13, 00);
+		assertEquals(true, handleTime.isWorkHour(timeInRange));
+	}
+
+	@Test
+	public void ifTimeIsOutsideRange(){
+		TimeHandler handleTime = new TimeHandler();
+		LocalTime afterRange = LocalTime.of(19, 00);
+		LocalTime beforeRange = LocalTime.of(05, 00);
+		assertEquals(false, handleTime.isWorkHour(afterRange));
+		assertEquals(false, handleTime.isWorkHour(beforeRange));
+	}
+
+	@Test
+	public void isAnWorkDay(){
+		TimeHandler handleTime = new TimeHandler();
+		Calendar workDay = new GregorianCalendar();
+		workDay.set(GregorianCalendar.DAY_OF_WEEK, 6);
+		assertEquals(true, handleTime.isWeekday(workDay));
+	}
+
+	@Test
+	public void isAnNotAWorkDay(){
+		TimeHandler handleTime = new TimeHandler();
+		Calendar workDay = new GregorianCalendar();
+		workDay.set(GregorianCalendar.DAY_OF_WEEK, 1);
+		assertEquals(false, handleTime.isWeekday(workDay));
+	}
+	
+	@Test
+	public void getFullName(){
+		Employee emp1 = new Employee("adrian", "jakobsen", 1234, false);
+		assertEquals("adrian jakobsen", emp1.getFullName());
+	}
+	
+	@Test
+	public void setFirstAndLastNameGetFullName(){
+		Employee emp1 = new Employee("adrian", "jakobsen", 1234, false);
+		emp1.setFirstName("pelle");
+		emp1.setLastName("politibill");
+		assertEquals("pelle politibill", emp1.getFullName());
+	}
+	
+	@Test
+	public void calculateCredit(){
+		Employee emp1 = new Employee("adrian", "jakobsen", 1234, false);
+		emp1.calculateCredit(123.2, 42.2);
+		assertEquals(5199.04, emp1.calculateCredit(123.2, 42.2),0.001);
+	}
+	
+	@Test
+	public void calculateBonus(){
+		Employee emp1 = new Employee("adrian", "jakobsen", 1234, false);
+		emp1.calculateBonus(4, 100.2);
+		assertEquals(400.8, emp1.calculateBonus(4, 100.2),0.01);
+	}
+	
+	@Test
+	public void compareTwoDiffrentCards(){
+		Employee emp1 = new Employee("adrian", "jakobsen", 1234, false);
+		Employee emp2 = new Employee("adrian", "Jensen", 1234, false);
+		assertTrue(0 > emp1.compareTo(emp2));
+	}
+	
+	@Test
+	public void compareTwoIndeticalCards(){
+		Employee emp1 = new Employee("adrian", "jakobsen", 1234, false);
+		Employee emp2 = new Employee("adrian", "jakobsen", 1234, false);
+		assertTrue(0== emp1.compareTo(emp2));
+	}
+	
+	@Test
+	public void cloneCardAndGetAnIndentical(){
+		
+	}
+}

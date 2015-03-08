@@ -1,0 +1,40 @@
+package helperClasses;
+
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
+
+public class TimeHandler {
+
+	public TimeHandler(){
+		
+	}
+
+	
+	public boolean isWeekday(Calendar date){
+		if(today == DayOfWeek.SATURDAY || today== DayOfWeek.SUNDAY){
+			return false;
+		}else{
+			return true;
+		}
+	}
+	
+	public boolean isWorkHour(Calendar date){
+		if(time.getHour()<17 && 0700<=time.getHour()){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
+	public boolean guestValidTerm(Calendar date, Calendar expirationDate){
+		if(date.getInstance().compareTo(expirationDate)<7){
+			return false;
+		}else{
+			return true;
+		}
+	}
+}

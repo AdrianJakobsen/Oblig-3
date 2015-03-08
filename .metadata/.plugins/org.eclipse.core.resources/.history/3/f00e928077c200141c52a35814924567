@@ -1,0 +1,16 @@
+package tests;
+
+import static org.junit.Assert.*;
+import implementation.textReverse;
+import org.junit.Test;
+
+public class testTextReverse {
+
+	@Test
+	public void getRevereseOfInput() {
+		textReverese reverse = new TextReverse();
+		reverese("esrever", reverse.revereseString("reverse"));
+		
+	}
+
+}

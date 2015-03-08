@@ -1,0 +1,54 @@
+package Tests;
+
+import static org.junit.Assert.*;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
+import helperClasses.TimeHandler;
+
+import org.junit.Test;
+
+import Implementation.Employee;
+
+public class testEmployee {
+	
+	@Test
+	public void checkPin(){
+		Employee emp = new Employee("a", "b", 1234, false);
+		assertEquals(1234, emp.getPin());
+	}
+	
+	@Test
+	public void ifTimeIsWithinRange(){
+		TimeHandler handleTime = new TimeHandler();
+		LocalTime timeInRange = LocalTime.of(13, 00);
+		assertEquals(true, handleTime.isWorkHour(timeInRange));
+	}
+	
+	@Test
+	public void ifTimeIsOutsideRange(){
+		TimeHandler handleTime = new TimeHandler();
+		LocalTime afterRange = LocalTime.of(19, 00);
+		LocalTime beforeRange = LocalTime.of(05, 00);
+		assertEquals(false, handleTime.isWorkHour(afterRange));
+		assertEquals(false, handleTime.isWorkHour(beforeRange));
+	}
+	
+	@Test
+	public void isAnWorkDay(){
+		TimeHandler handleTime = new TimeHandler();
+		Calendar workDay = new GregorianCalendar(2015,3,3);// a tuesday
+		assertEquals(true, handleTime.isWeekday(workDay));
+	}
+	
+	@Test
+	public void isAnNotAWorkDay(){
+		TimeHandler handleTime = new TimeHandler();
+		Calendar workDay = new GregorianCalendar(2015,8,3);// a sunday
+		assertEquals(true, handleTime.isWeekday(workDay));
+	}
+}

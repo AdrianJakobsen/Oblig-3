@@ -1,0 +1,72 @@
+package Tests;
+
+import static org.junit.Assert.*;
+
+import java.util.ArrayList;
+import java.util.Collections;
+
+import org.junit.Test;
+
+import Implementation.Employee;
+import Implementation.Guest;
+import abstractClasses.Card;
+
+public class testCard {
+
+	
+	@Test
+	public void compareTwoDiffrentCardsSameType(){
+		Card emp1 = new Employee("adrian", "jakobsen", 1234, false);
+		Card emp2 = new Employee("adrian", "Jensen", 1234, false);
+		assertTrue(0 > emp1.compareTo(emp2));
+	}
+	@Test
+	public void compareTwoDiffrentCardsDiffrentTypes(){
+		Card emp1 = new Employee("adrian", "jakobsen", 1234, false);
+		Card guest = new Guest("pelle", "politibil", 1251);
+		assertTrue(0 > emp1.compareTo(guest));
+	}
+	
+	@Test
+	public void compareTwoIndeticalCards(){
+		Card emp1 = new Employee("adrian", "jakobsen", 1234, false);
+		Card emp2 = new Employee("adrian", "jakobsen", 1234, false);
+		assertTrue(0== emp1.compareTo(emp2));
+	}
+	
+	@Test
+	public void cloneCardAndGetAnIndentical() throws CloneNotSupportedException{
+		Card emp1 = new Employee("adrian", "jakobsen", 1234, false);
+		Card emp2 = emp1.clone();
+		assertEquals(emp1.getCardNumber(), emp2.getCardNumber());
+		assertEquals(emp1.getDateCreated(), emp2.getDateCreated());
+		assertEquals(emp1.getFirstName(), emp2.getFirstName());
+		assertEquals(emp1.getLastName(), emp2.getLastName());
+		assertEquals(emp1.getPin(), emp2.getPin());
+	}
+	
+	@Test
+	public void sortingTest(){
+		ArrayList<Card> cardList = new ArrayList<>();
+		Card emp1 = new Employee("adrian", "jakobsen", 1234, false);
+		Card emp2 = new Employee("adrian", "jensen", 1234, false);
+		Card emp3 = new Employee("adrian", "Alfred", 1234, false);
+		Card emp4 = new Employee("petter", "jakobsen", 1234, false);
+		Card emp5 = new Employee("AdrianT", "jakobsen", 1234, false);
+		
+		Card emp6 = new Guest("pelle", "jakobsen", 1234);
+		Card emp7 = new Guest("AdrianT", "politibil", 1234);
+		cardList.add(emp1);
+		cardList.add(emp2);
+		cardList.add(emp3);
+		cardList.add(emp4);
+		cardList.add(emp5);
+		cardList.add(emp6);
+		cardList.add(emp7);
+		
+		
+		Collections.sort(cardList);
+		
+	}
+
+}
